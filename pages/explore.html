@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Explore MakeMe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/styleExplore.css">
+</head>
+<body>
+    <header>
+        <h1>MakeMe</h1>
+        <a href="./notifiche.html"> <img src="../resources/cuoreNotifica.png" alt="notifiche"/></a>
+    </header>
+    <main>
+        <form id='explore' method="post" action="../php/explore.php">
+            <label for="search">Ricerca utenti</label>
+            <input type="text" id="search" name="search"></input>
+            <input type="submit" value="invia">
+        </form>
+
+        <div id='users-container'></div>
+    </main>
+
+    <footer>
+        <a id="home"href="./home.html"> <img src="../resources/home.png" alt="home"/></a>
+        <a id="search" href="./post.html"> <img src="../resources/post.png" alt="trova utenti"/></a>
+        <a id="profile" href="./profilo.html"> <img src="../resources/profilo.png" alt="profilo"/></a>      
+    </footer>
+<script src="../js/explore.js"></script>
+</body>
+</html>

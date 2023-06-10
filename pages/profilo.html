@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/styleProfilo.css">
+  
+    <title>MakeMe profilo</title> 
+</head>
+<body>
+    <header>
+        <div class="top-container">
+            <div id="imgProfilo">
+                <img src="../profilo.jpg" alt="foto profilo">
+            </div>
+            <div id="data-container">
+                <div id="post-count">
+                    <h5>POST</h5>
+                    <data id="n-post"></data>
+                </div>
+                <div id="follower-count">
+                    <h5>FOLLOWER</h5>
+                    <data id="n-follower"></data>
+                </div>
+                <div id="follow-count">
+                    <h5>FOLLOW</h5>
+                    <data id="n-follow"></data>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <span id='username'></span>
+            <p id="bio"></p>
+        </div>
+    </header>
+    <main>
+        
+        <div id="post-container">
+            
+        </div>
+
+    </main>
+    
+    <footer>
+        <a id="home" href="./home.html"> <img src="../resources/home.png" alt="home"/></a>
+        <a id="search" href="./explore.html"> <img src="../resources/search.png" alt="trova utenti"/></a>
+        <a id="post" href="./post.html"> <img src="../resources/post.png" alt="crea post"/></a>      
+    </footer>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

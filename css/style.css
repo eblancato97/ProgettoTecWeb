@@ -1,0 +1,46 @@
+
+
+
+
+
+
+main #post-container{
+    width: 100%;
+    display: block; 
+
+    width: 30%;
+}
+
+main #post-container div.card{
+    width: 100%;
+}
+
+footer{
+    line-height: 40px;
+    display: inline-flex;
+    background-color: burlywood;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+    z-index: 16;
+}
+
+
+html, body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+/*TO REMOVE*/
+.image-container {
+    background-color: aqua;
+}

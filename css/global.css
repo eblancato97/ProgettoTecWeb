@@ -1,0 +1,74 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    width:100%;
+    padding-right: 0%;
+}
+
+h1 {
+    margin: 0;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+    top: 0; 
+    background-color: burlywood;
+    position: fixed;
+    /* z-index per compensare lo scroll delle card */
+    z-index: 16; 
+}
+
+header a{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 3rem;
+}
+
+header img {
+    height: 70%;  /*TODO: refactor, sarebbe meglio impostare le dimensioni sulla base dell'altezza*/
+    margin-right: 2rem;
+}
+
+header h1 {
+    margin-left: 1rem;
+}
+
+
+main{
+    margin-top: 10vh;
+}
+
+footer{
+    z-index: 1;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: burlywood;
+    position: fixed; 
+    bottom:0;
+}
+
+footer a:first-child {
+    margin-left: 1rem;
+}
+
+footer a:last-child {
+    margin-right: 1rem;
+}
+
+footer a{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+footer img{
+    height: 70%;
+}

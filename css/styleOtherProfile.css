@@ -1,0 +1,174 @@
+html, body{
+    height: 100vh;
+}
+
+header{
+    height: fit-content;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    background-color: burlywood;
+    padding: 1rem;
+}
+
+header > .profile-header {
+    height: 70%;
+    width: 100%;
+    display: flex;
+}
+
+.img-container {
+    height: 80%;
+    margin-right: 2rem;
+}
+
+.img-container > img {
+    height: 7rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0px;
+}
+
+#data-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 8;
+}
+
+#data-container > button {
+    width: 70%;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+/* @media screen and (min-width: 426px) {
+    #data-container > button {
+    }
+} */
+
+.main-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.main-data > div {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.bottom-data{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.bottom-data-desktop {
+    display: none;
+}
+
+.user-info {
+    height: 100%;
+    width: 70%;
+    flex: 7;
+}
+
+#bio {
+    margin: 0;
+
+}
+
+main{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;    
+    overflow-y: auto;
+}
+
+.post-header {
+    display: flex;
+}
+
+.post-header > img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+}
+
+header .top-container #imgProfilo{
+    width: 30%;
+    display: flex; 
+    justify-content: center;
+    flex-direction: row;
+}
+
+header .top-container #imgProfilo img{
+
+    align-items: center;
+}
+
+main #post-container{
+    width: 100%;
+    display: block; 
+
+    width: 30%;
+}
+
+main #post-container div.card{
+    width: 100%;
+}
+
+footer{
+    line-height: 40px;
+    display: inline-flex;
+    background-color: burlywood;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+}
+
+footer a input{
+    width: 50px;
+    display: inline;
+}
+
+#home{
+    margin-right: 20%;
+}
+
+#post{
+    margin-left: 20%; 
+    
+}
+
+#search{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+html, body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+/*TO REMOVE*/
+.image-container {
+    background-color: aqua;
+}

@@ -1,0 +1,68 @@
+
+
+main{
+    text-align-last: center;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+body{
+    background-color: beige;
+    width: 100%;
+    
+}
+
+h1{
+    border:10px;
+    margin: 10px;
+    width: 90%;
+}
+header{
+    position: fixed;
+    top: 0; 
+    display: flex;
+    width: 100%;
+    background-color: burlywood;
+    line-height: 50px; 
+}
+
+header a input{
+    width: 50px;
+    float: right;
+}
+
+
+
+
+
+input{
+    margin: 5px 0;
+}
+
+footer{
+    line-height: 40px;
+    display: inline-flex;
+    background-color: burlywood;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+}
+
+footer a input{
+    width: 50px;
+    display: inline;
+}
+
+#home{
+    margin-right: 20%;
+}
+
+#profile{
+    margin-left: 20%; 
+    
+}
+
+#search{
+    margin-left: 20%;
+    margin-right: 20%;
+}

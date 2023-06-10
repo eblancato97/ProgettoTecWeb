@@ -1,0 +1,149 @@
+header{
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 25vh;
+    background-color: burlywood;
+    flex-direction: column;
+}
+
+
+header .top-container{
+    display: flex; 
+    width: 100%;
+    height: 50%;
+}
+
+.post-header {
+    display: flex;
+}
+
+.post-header > img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+}
+
+
+.bottom-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+
+}
+
+.bottom-container span{height: 30%;}
+.bottom-container p{height: 70%; }
+/* definire la caratteristica di scorrimento o allungamento
+   in caso di bio troppo lunga
+*/
+
+header .top-container #imgProfilo{
+    width: 30%;
+    display: flex; 
+    justify-content: center;
+    flex-direction: row;
+}
+
+header .top-container #imgProfilo img{
+
+    align-items: center;
+}
+
+
+
+
+#data-container{
+    display: flex; 
+    width: 100%;
+    
+    justify-content: space-between;
+}
+
+#data-container div{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#data-container div h5{
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}
+
+html, body{
+    height: 100vh;
+    display:flex; 
+}
+
+
+main{
+    height: 65vh;
+    display: flex; 
+    justify-content: center;
+    width: 100vw;    
+    overflow-y: auto;
+    margin-top: 25vh;    
+}
+
+main #post-container{
+    width: 100%;
+    display: block; 
+
+    width: 30%;
+}
+
+main #post-container div.card{
+    width: 100%;
+}
+
+footer{
+    line-height: 40px;
+    display: inline-flex;
+    background-color: burlywood;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+}
+
+footer a input{
+    width: 50px;
+    display: inline;
+}
+
+#home{
+    margin-right: 20%;
+}
+
+#post{
+    margin-left: 20%; 
+    
+}
+
+#search{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+html, body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+/*TO REMOVE*/
+.image-container {
+    background-color: aqua;
+}

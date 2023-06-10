@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeMe Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/styleLogin.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>MakeMe</h1>
+        <a href="./notifiche.html"> <img src="../resources/cuoreNotifica.png" alt="notifiche"/></a>
+    </header>
+
+    <main class="main">
+        <div class="main-container">
+            <h2>Registrati</h2>
+            <form class="form login-form" id="register" action="../php/registerCheck.php" method="post" enctype="multipart/form-data">
+                <label for="usernamer">Username</label>
+                <input type="text" id="usernamer" name="usernamer" placeholder="inserisci username" required>
+                <label for="emailr">Email</label>
+                <input type="email" id="emailr" name="emailr" placeholder="inserisci l'email" required>
+                <label for="passwordr">Password</label>
+                <input type="password" id="passwordr" name="passwordr" placeholder="inserisci password" required>
+                <label for="bio">Bio</label>
+                <input type="textarea" id="bio" name="bio" placeholder="Descriviti nella tua bio">
+                <label for="imgProfilo">Immagine Profilo</label>
+                <input type="file" id="imgProfilo" name="imgProfilo" accept="image/jpeg">
+                <input type="submit" value="Invia">
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <a id="home" href="./home.html"> <img type="image" src="../resources/home.png" alt="home" /></a>
+        <a id="search" href="./explore.html"> <img type="image" src="../resources/search.png" alt="trova utenti" /></a>
+        <a id="profile" href="./profilo.html"> <img type="image" src="../resources/profilo.png" alt="Profilo" /></a>
+    </footer>
+
+    <!-- js scripts -->
+    <script src="../js/registration.js"></script>
+</body>
+
+</html>
