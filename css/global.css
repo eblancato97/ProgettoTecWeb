@@ -49,14 +49,20 @@ header h1 {
 main{
     margin-top: 10vh;
     margin-bottom: 10vh;
+    align-items: center;
     
 }
 
 main #post-container{
     width: 80%;
-    display: flex; 
     justify-content: center;
     margin-top: 1vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    margin-bottom: 2vh;
 }
 
 
@@ -218,10 +224,9 @@ h2, h3, h4, h5, h6{
 
 
     #post-container{
-        justify-content: center !important;
-        width: 55% !important;
+        width: 60% !important;
     }
     .card {
-        width:55% !important;
+        width:60% !important;
     }
 }

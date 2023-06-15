@@ -5,7 +5,6 @@ xhr = new XMLHttpRequest();
 xhr.open('POST', '../php/notifiche.php');
 xhr.onload = function(){
     if(xhr.status == 200){
-        console.log(this.responseText);
         var response = JSON.parse(this.responseText); 
         if (response.notifiche!=null){
             notificationContainer.appendChild(populate(response.notifiche));
