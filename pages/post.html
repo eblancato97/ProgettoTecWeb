@@ -11,55 +11,28 @@
 <body>
     <header>
         <h1>MakeMe</h1>
-        <a href="../notifiche.html"> <input type="image" src="../resources/cuoreNotifica.png" alt="notifiche"/></a>
+        <a href="./notifiche.html"> <img src="../resources/cuoreNotifica.png" alt="notifiche"/></a>
     </header>
 
 
     <main>
     <!--action=script js, target=se si viene trasferiti a questa o ad una altra finestra-->
-        <form id='post' method="post" action="../php/postCreator.php" encty="multipart/form-data">
+        <form id='post' method="post" action="../php/postCreator.php" enctype="multipart/form-data">
             
             <label for="descrizione">Descrizione Post</label>
-            <textarea rows="10" cols="100" id="descrizione" name="descrizione"></textarea>
+            <textarea rows="10" cols="100" id="descrizione" name="descrizione" maxlength="300"></textarea>
             <label for="immagini">Carica Immagini</label>
-            <input type="file" id="immagini" name="immagini[]" accept="image/*.jpeg" multiple>
+            <input type="file" id="immagini" name="immagini[]" accept="image/jpeg" multiple >
             <input type="submit" value="invia">
         </form>
     </main>
 
-    <script type="text/javascript">
-        // Selezioniamo il form e impediamo la sua sottomissione normale
-        const form = document.getElementById('post');
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            // Otteniamo i dati dal form
-            const formData = new FormData(form);
-            
-            // Creiamo una richiesta HTTP
-            const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) { 
-                if (this.responseText == 1){
-                    alert("Post non creato correttamente. Riprovare."+this.responseText); 
-                    window.location = "./post.html"; 
-                }else{
-                    alert("Post creato."+this.responseText);                    
-                    window.location = "./home.html";
-                }
-            }
-            };
-
-            // Invio i dati del form al file PHP
-            xhr.open('POST', form.action, true);
-            xhr.send(formData);
-           
-        });
-        </script>
+    <script src="../js/post.js"></script>
 
     <footer>
-        <a id="home" href="./home.html"> <input type="image" src="../resources/home.png" alt=""/></a>
-        <a id="search" href="./explore.html"> <input type="image" src="../resources/search.png" alt=""/></a>
-        <a id="profile" href="./profilo.html"> <input type="image" src="../resources/profilo.png" alt=""/></a>      
+        <a id="home" href="./home.html"> <img src="../resources/home.png" alt="home"/></a>
+        <a id="search" href="./explore.html"> <img src="../resources/search.png" alt="esplora utenti"/></a>
+        <a id="profile" href="./profilo.html"> <img src="../resources/profilo.png" alt="profilo"/></a>      
     </footer>
 </body>
 </html>

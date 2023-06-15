@@ -94,23 +94,16 @@
                 //aggiungo i like 
                 $sql = "SELECT * FROM Mette_like WHERE idPost = '$id'";
                 $likeResult = $connection->query($sql);
-                if (mysqli_num_rows($likeResult)>0){
-                $likeList = mysqli_fetch_all($likeResult, MYSQLI_ASSOC);
-                $arrayResult[$i]['like'] = $likeList;
+                $likeCount = mysqli_num_rows($likeResult);
+                if ($likeCount>0){
+                  $likeList = mysqli_fetch_all($likeResult, MYSQLI_ASSOC);
+                  $arrayResult[$i]['like'] = $likeList;
+                  $arrayResult[$i]['likeCount'] = $likeCount;
                 }else{
-                $arrayResult[$i]['like'] = null;
+                  $arrayResult[$i]['like'] = null;
+                  $arrayResult[$i]['likeCount'] = $likeCount;
+    
                 }
-
-                //aggiungo i commenti
-                $sql = "SELECT * FROM Commenta WHERE idPost = '$id'";
-                $commentResult = $connection->query($sql);
-                if (mysqli_num_rows($commentResult)>0){
-                $commentList = mysqli_fetch_all($commentResult, MYSQLI_ASSOC);
-                $arrayResult[$i]['comment'] = $commentList;
-                }else{
-                $arrayResult[$i]['comment'] = null;
-                }
-                    
             }
 
             $json= array(

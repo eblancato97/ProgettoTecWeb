@@ -15,7 +15,16 @@
     $sql = "INSERT INTO Commenta (username, idPost, dataOra, commento) VALUES ('$user', '$idPost', 
     '$dataOra', '$commento')";
 
-    if($connection->query($sql)== true){
+    if($connection->query($sql)== TRUE){
+        $sql = "SELECT autore FROM Post WHERE idPost = '$idPost'"; 
+        $result = $connection->query($sql);
+        $authorResult = mysqli_fetch_all($result, MYSQLI_ASSOC); 
+        $autore = $authorResult[0]['autore'];
+        if ($autore != $user){
+            $notifica = $user. " ha commentato il tuo post con: ".$commento;
+            $sql = "INSERT INTO Notifiche (notifica, dataOra, username, userNotifica) VALUES ('$notifica', '$dataOra', '$autore', '$user')";
+            $connection->query($sql); 
+        }
         echo 0; 
     }else{
         echo 1; 

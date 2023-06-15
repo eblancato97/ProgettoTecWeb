@@ -47,6 +47,20 @@
                 }
                 $arrayResult[$i]['immagini']= $col;
                 // $res['immagini'] = $arrayimg;
+
+                //aggiungo i like 
+                $sql = "SELECT * FROM Mette_like WHERE idPost = '$id'";
+                $likeResult = $connection->query($sql);
+                $likeCount = mysqli_num_rows($likeResult);
+                if ($likeCount>0){
+                  $likeList = mysqli_fetch_all($likeResult, MYSQLI_ASSOC);
+                  $arrayResult[$i]['like'] = $likeList;
+                  $arrayResult[$i]['likeCount'] = $likeCount;
+                }else{
+                  $arrayResult[$i]['like'] = null;
+                  $arrayResult[$i]['likeCount'] = $likeCount;
+
+                }
             }
 
             echo json_encode($arrayResult);

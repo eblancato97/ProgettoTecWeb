@@ -7,7 +7,7 @@
 
     $id = $_POST['idPost']; 
 
-    $sql = "SELECT c.commento, c.username, u.imgProfilo FROM Commenta as c JOIN Utenti as u ON u.username = c.username WHERE idPost = '$id'";
+    $sql = "SELECT c.commento, c.username, u.imgProfilo, c.dataOra FROM Commenta as c JOIN Utenti as u ON u.username = c.username WHERE idPost = '$id' ORDER BY c.dataOra DESC";
     $result = $connection->query($sql); 
     $commentCount = mysqli_num_rows($result);
 

@@ -22,13 +22,13 @@
             <h2>Registrati</h2>
             <form class="form login-form" id="register" action="../php/registerCheck.php" method="post" enctype="multipart/form-data">
                 <label for="usernamer">Username</label>
-                <input type="text" id="usernamer" name="usernamer" placeholder="inserisci username" required>
+                <input type="text" id="usernamer" name="usernamer" placeholder="inserisci username" required maxlength="40">
                 <label for="emailr">Email</label>
-                <input type="email" id="emailr" name="emailr" placeholder="inserisci l'email" required>
+                <input type="email" id="emailr" name="emailr" placeholder="inserisci l'email" required maxlength="45">
                 <label for="passwordr">Password</label>
-                <input type="password" id="passwordr" name="passwordr" placeholder="inserisci password" required>
+                <input type="password" id="passwordr" name="passwordr" placeholder="inserisci password" required maxlength="45">
                 <label for="bio">Bio</label>
-                <input type="textarea" id="bio" name="bio" placeholder="Descriviti nella tua bio">
+                <input type="text" id="bio" name="bio" placeholder="Descriviti nella tua bio" maxlength="200">
                 <label for="imgProfilo">Immagine Profilo</label>
                 <input type="file" id="imgProfilo" name="imgProfilo" accept="image/jpeg">
                 <input type="submit" value="Invia">
@@ -37,9 +37,9 @@
     </main>
 
     <footer>
-        <a id="home" href="./home.html"> <img type="image" src="../resources/home.png" alt="home" /></a>
-        <a id="search" href="./explore.html"> <img type="image" src="../resources/search.png" alt="trova utenti" /></a>
-        <a id="profile" href="./profilo.html"> <img type="image" src="../resources/profilo.png" alt="Profilo" /></a>
+        <a id="home" href="./home.html"> <img src="../resources/home.png" alt="home" /></a>
+        <a id="search" href="./explore.html"> <img src="../resources/search.png" alt="trova utenti" /></a>
+        <a id="profile" href="./profilo.html"> <img src="../resources/profilo.png" alt="Profilo" /></a>
     </footer>
 
     <!-- js scripts -->

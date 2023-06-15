@@ -17,7 +17,6 @@ formr.addEventListener('submit', (event) => {
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             datar = this.responseText;
-            alert(datar);
             if (datar == 1) {
                 alert("Username già utilizzato, riprovare con un username diverso.");
             } else {

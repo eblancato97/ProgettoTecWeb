@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         
     
         //cancello il file temporaneo per l'immagine profilo
-        $file = "../profilo.jpg"; 
+        $file = "../".$username.".jpg"; 
         if (is_file($file)){
             unlink($file); 
         }
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             
             $image = $result['imgProfilo'];
             file_put_contents($file, $image);
-            $_SESSION['imgProfilo'] = "../profilo.jpg";
+            $_SESSION['imgProfilo'] = $file;
         }
         
         $_SESSION['username'] = $_POST['username'];
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             "username" => $_POST['username'],
             "bio" => $result['bio'],
             "logged" => true,  
-            "urlImage" => "../profilo.jpg"
+            "urlImage" => $file
         );
     
         echo json_encode($json);

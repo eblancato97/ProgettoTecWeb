@@ -6,6 +6,7 @@
     align-items: center;
     margin: auto;
     text-align-last: center;
+    width: 80vw;
 }
 
 .form{
@@ -23,9 +24,17 @@
     border: 1px solid;
 }
 
+button, #submit-data{
+    border-radius: 10%;
+    background-color: burlywood;
+}
+
+
+
 body{
     background-color: beige;
     margin: 0;
+    font-family:  'Roboto', Arial, sans-serif;
 }
 
 

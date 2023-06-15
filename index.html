@@ -22,13 +22,13 @@
             <h2>Accedi</h2>
             <form class="form login-form" id="login" method="post" action="./php/loginCheck.php">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="inserisci username" required>
+                <input type="text" id="username" name="username" placeholder="inserisci username" required maxlength="40">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="inserisci password" required autocomplete="current-password">
-                <input type="submit" value="Invia dati" > 
+                <input type="password" id="password" name="password" placeholder="inserisci password" required autocomplete="current-password" maxlength="45">
+                <input type="submit" id="submit-data" value="Invia dati" > 
             </form>
             <button onclick="goToRegistration()">
-                registrati
+                Registrati
             </button>
         </div>
     </main>

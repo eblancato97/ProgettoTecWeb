@@ -13,9 +13,13 @@ form.addEventListener('submit', (event) => {
             if(this.responseText != 0){
                 var data = JSON.parse(this.responseText);
                 console.log(data); 
-                container = document.getElementById('users-container');
+                var container = document.getElementById('users-container');
+                while (container.hasChildNodes()){
+                    container.firstChild.remove(); 
+                }
                 data.forEach(element => {
-                    container.appendChild(createUserElement(element));
+                   
+                    container.appendChild(createUserElement(element)); 
                 });
             }else{
                 alert("Nessun utente trovato.")
@@ -52,7 +56,7 @@ function createUserElement(data){
 
     textElement.appendChild(text); 
     element.appendChild(imgElement); 
-    element.appendChild(textElement); 
+    element.appendChild(textElement);
     
     return element; 
 }

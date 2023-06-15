@@ -19,7 +19,7 @@ if ($_POST['operation']=='add'){
         echo 0;
         //Inserimento nelle notifiche l'inizio del segui
         $notifica = $seguente." ha iniziato a seguirti.";
-        $sql = "INSERT INTO Notifiche (notifica, dataOra, username) VALUES ('$notifica', '$dataOra', '$seguito')";
+        $sql = "INSERT INTO Notifiche (notifica, dataOra, username, userNotifica) VALUES ('$notifica', '$dataOra', '$seguito', '$seguente')";
         $connection->query($sql);
     }else{
         echo 1;

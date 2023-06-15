@@ -18,7 +18,6 @@ xhr.onload = function() {
       
       var postContainer = document.getElementById('post-container')
 
-      console.log(response)
       setProfileInfo(response); 
 
       response.post.forEach((post, index) => {
@@ -45,7 +44,7 @@ function createCard(post) {
 
 
   // Title
-  cardTitle = document.createElement('h3');
+  cardTitle = document.createElement('h6');
   //imgProfilo
   imgProfilo = document.createElement('img');
   imgProfilo.src = "data:image/jpeg;base64,"+post.imgProfilo
@@ -70,18 +69,32 @@ function createCard(post) {
  
 
   card.appendChild(imageContainer);
+
+  
   const bottom = document.createElement('div')
   bottom.classList.add('bottom-post');
 
+  const descrizione = document.createElement('p');
+  descrizione.classList.add('descrizione');
+  descrizione.appendChild(document.createTextNode(post.descrizione));
+
+  const commentSection = document.createElement('div');
+  commentSection.classList.add('comment-section');
+
   bottom.appendChild(generateLike(post));
   //creo il bottone e la box dei commenti 
-  createCommentButton(post, bottom); 
+  bottom.appendChild(createCommentButton(post, commentSection)); 
 
+  const likeCount = document.createElement('span');
+  likeCount.classList.add('likeCount');
+  likeCount.appendChild(document.createTextNode("Like: "+post.likeCount));
+  bottom.appendChild(likeCount);
 
-  
-  //creare e appendere la sezione commenti
 
   card.appendChild(bottom);
+  card.appendChild(descrizione); 
+  card.appendChild(commentSection); 
+
 
   return card
 }
@@ -181,6 +194,10 @@ function createPostCarousel(post) {
 
 //Funzione per il riempimento delle informazioni dell'utente
 function setProfileInfo(info){
+
+  const img = document.getElementById('image-profilo');
+  img.src = sessionStorage.getItem('image');
+
   const textUser= document.createTextNode(sessionStorage.getItem('username'));
   const user = document.getElementById('username');
   user.appendChild(textUser); 
@@ -207,16 +224,22 @@ function generateLike(post){
 
   //chiamo il file php per verificare se ci sono like nel post
   const likeButton = document.createElement('input');
+  likeButton.classList.add('like-button');
   likeButton.alt = 'like button';
   likeButton.type = 'image';
+
 
   //scorro la lista di like per vedere se l'utente loggato lo ha messo 
   //in modo da avere il cuore pieno o vuoto
   if (post.like !=null){
     post.like.forEach(like =>{
+      console.log("like: "+like.username+ "userLoggato: "+sessionStorage.getItem('username'))
       if (like.username == sessionStorage.getItem('username')){
         likeButton.src = "../resources/cuoreAttivo.png"; 
         likeButton.value = "on"; 
+      }else{
+        likeButton.src = "../resources/cuoreVuoto.png"; 
+        likeButton.value = "off"; 
       }
     });
   }else{
@@ -234,6 +257,7 @@ function generateLike(post){
     let formData = new FormData();
     formData.append('operation', operation);
     formData.append('idPost', post.idPost);
+    console.log("operation: "+operation+" idPost: "+post.idPost); 
     var xhr2 = new XMLHttpRequest();
     xhr2.open('POST', '../php/like.php');
     xhr2.onload = function(){
@@ -253,29 +277,30 @@ function generateLike(post){
   return likeButton;
 }
 
+
 function createCommentButton(post, bottom){
   //creo il bottone dei commenti 
   const commentButton = document.createElement('input');
+  commentButton.classList.add('comment-button');
   commentButton.alt = 'comment button';
   commentButton.type = 'image';
   commentButton.src = '../resources/comment.png';
 
   //aggiungo il bottone alla sezione sotto il post
-  bottom.appendChild(commentButton); 
 
   //alla pressione 
   
   //creo la sezione comment box per contenere il nuovo commento e la lista dei commenti 
-  const commentBox = document.createElement('div');
-  commentBox.classList.add('insertComment-box');
-  commentBox.style.display = 'none';
-  
+ 
   var addCommentBox = document.createElement('div');
   addCommentBox.classList.add('addComment-box');
+  addCommentBox.style.display = 'none';
   
   var commentText = document.createElement('input');
+  commentText.placeholder = 'inserisci commento';
   commentText.type= 'text';
   commentText.alt = 'inserisci commento'
+  commentText.maxLength = 300;
   commentText.classList.add('insertText');
   
   var commentSubmit = document.createElement('input');
@@ -289,7 +314,9 @@ function createCommentButton(post, bottom){
   addCommentBox.appendChild(commentSubmit); 
   
   //attacco la box nuovo commento a quella principale dei commenti 
-  commentBox.appendChild(addCommentBox); 
+  bottom.appendChild(addCommentBox); 
+  var commentList = document.createElement('div'); 
+  commentList.classList.add('commentList-container');
   
   //aggancio un listener all'azione dell'inserimento di un nuovo commento 
   //perciò vado a chiamare il file php che si occupa dell'inserimento del nuovo commento 
@@ -298,7 +325,7 @@ function createCommentButton(post, bottom){
     formData.append('idPost', post.idPost); 
     formData.append('commento', commentText.value);
 
-    
+  
     
     var xhr = new XMLHttpRequest(); 
     xhr.open('POST', '../php/comment.php');
@@ -306,24 +333,31 @@ function createCommentButton(post, bottom){
       if(xhr.status == 200){
         //inserire controllo inserimento commento
         if (this.responseText == 0){
-
+          if (bottom.children.length>1){
+            bottom.removeChild(commentList); 
+            commentList = generateCommentList(post); 
+            bottom.appendChild(commentList); 
+          }
         }
       }
     };
     xhr.send(formData); 
   });
-  
-  commentBox.appendChild(generateCommentList(post)); 
-  bottom.appendChild(commentBox); 
+  commentList.appendChild(generateCommentList(post)); 
+  bottom.appendChild(commentList); 
+  commentList.style.display = 'none';
   
   commentButton.addEventListener('click', function(){
-    var stile = getComputedStyle(commentBox); 
+    var stile = getComputedStyle(commentList); 
     if (stile.display === 'block'){
-      commentBox.style.display = 'none';
+      commentList.style.display = 'none';
+      addCommentBox.style.display = 'none';
     }else{
-      commentBox.style.display = 'block'; 
+      commentList.style.display = 'block'; 
+      addCommentBox.style.display = 'flex';
     }
   });
+  return commentButton;
 }
 
 
@@ -337,7 +371,6 @@ function generateCommentList(post){
 
   let formData2 = new FormData(); 
   formData2.append("idPost", post.idPost); 
-  console.log(post.idPost);
 
   var xhr3 = new XMLHttpRequest(); 
   xhr3.open('post', '../php/getComment.php');
@@ -360,14 +393,24 @@ function generateCommentList(post){
           userCommento.classList.add('user-commento');
           userCommento.appendChild(document.createTextNode(element.username));
 
+          const topRow = document.createElement('div');
+          topRow.classList.add('top-row');
+
+          topRow.appendChild(imgCommento); 
+          topRow.appendChild(userCommento);
+
           const testoCommento = document.createElement('p');
           testoCommento.classList.add('testo-commento');
           const comment = document.createTextNode(element.commento); 
           testoCommento.appendChild(comment); 
 
-          commentRow.appendChild(imgCommento); 
-          commentRow.appendChild(userCommento);
-          commentRow.appendChild(testoCommento); 
+          const bottomRow = document.createElement('div');
+          bottomRow.classList.add('bottom-row');
+
+          bottomRow.appendChild(testoCommento); 
+
+          commentRow.appendChild(topRow); 
+          commentRow.appendChild(bottomRow);
 
           listaCommenti.appendChild(commentRow); 
 
