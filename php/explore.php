@@ -3,9 +3,7 @@
     require_once('globals.php');
     global $_SESSION; 
 
-    //ricezione di user
     if ($_POST['search']!= null){
-        //RACCOGLIERE I DATI DA CARICARE NEL HEADER DEL PROFILO. 
         $user = $_POST['search'];
         $logged = $_SESSION['username'];
         

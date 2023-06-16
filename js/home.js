@@ -2,7 +2,6 @@ var carouselId = 0;
 
 
 // Avvia la richiesta AJAX al file PHP
-// Esempio di richiesta POST AJAX senza parametri
 var xhr = new XMLHttpRequest();
 xhr.open('POST', '../php/homeFiller.php');
 
@@ -10,10 +9,8 @@ xhr.onload = function() {
   if (xhr.status === 200) {
     if (this.responseText!=0){
       var response = JSON.parse(this.responseText);
-      // Gestisci la risposta dalla richiesta AJAX  
-      
+     
       var postContainer = document.getElementById('post-container')
-
 
       response.forEach((post, index) => {
         const card = createCard(post);
@@ -50,7 +47,6 @@ function createCard(post) {
   
 
   
-  // // header append elements
   header.appendChild(imgProfilo);
   header.appendChild(cardTitle);
   card.appendChild(header);
@@ -101,7 +97,6 @@ function createCard(post) {
 
 // Funzione per la creazione di un carosello per il singolo post
 function createPostCarousel(post) {
-  // Genera un ID univoco per il carosello
 
   // Creazione dell'elemento del carosello
   const carouselElement = document.createElement('div');
@@ -178,7 +173,6 @@ function createPostCarousel(post) {
   // Inizializzazione del carosello di Bootstrap
   $(`#carouselContainer${carouselId}`).carousel();
 
-  // Aggiungi l'elemento del carosello al post o al contenitore desiderato
   
   carouselId++;
 

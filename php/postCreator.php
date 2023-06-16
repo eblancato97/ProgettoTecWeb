@@ -81,8 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         }
             
             
-            //N.B.
-            //effettuare un controllo che in caso il post venga creato e le immagini no, cancelli il post e dia messaggio di errore. 
             
             echo 0;
     }else{

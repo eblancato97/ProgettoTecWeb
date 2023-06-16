@@ -112,7 +112,6 @@ function createCard(post) {
 
 // Funzione per la creazione di un carosello per il singolo post
 function createPostCarousel(post) {
-  // Genera un ID univoco per il carosello
 
   // Creazione dell'elemento del carosello
   const carouselElement = document.createElement('div');
@@ -189,7 +188,6 @@ function createPostCarousel(post) {
   // Inizializzazione del carosello di Bootstrap
   $(`#carouselContainer${carouselId}`).carousel();
 
-  // Aggiungi l'elemento del carosello al post o al contenitore desiderato
 
   carouselId++;
 
@@ -352,10 +350,7 @@ function createCommentButton(post, bottom){
   commentButton.src = '../resources/comment.png';
 
   //aggiungo il bottone alla sezione sotto il post
-
-  //alla pressione 
-  
-  //creo la sezione comment box per contenere il nuovo commento e la lista dei commenti 
+  //alla pressione creo la sezione comment box per contenere il nuovo commento e la lista dei commenti 
  
   var addCommentBox = document.createElement('div');
   addCommentBox.classList.add('addComment-box');

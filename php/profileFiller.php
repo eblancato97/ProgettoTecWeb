@@ -72,7 +72,6 @@
               
             }
             $arrayResult[$i]['immagini']= $col;
-            // $res['immagini'] = $arrayimg;
 
             //aggiungo i like 
             $sql = "SELECT * FROM Mette_like WHERE idPost = '$id'";

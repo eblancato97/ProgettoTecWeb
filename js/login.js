@@ -1,13 +1,10 @@
-// Selezioniamo il form e impediamo la sua sottomissione normale
 var data; 
 const form = document.getElementById('login');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    // Otteniamo i dati dal form
     const formData = new FormData(form);
     
-    // Creiamo una richiesta HTTP
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { 

@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
  
 
-    //DA RIGUARDARE IL CONTROLLO
     if (isset($result) && $result === $_POST['usernamer']) {
         echo 1; 
     } else {
@@ -40,19 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
               unlink($file); 
           }
           move_uploaded_file($_FILES['imgProfilo']['tmp_name'], $file);
-         //$image = file_get_contents($_FILES['imgProfilo']['tmp_name']);
-         // $fp = fopen($file_tmp, 'rb');
-         // $contenuto_binario = fread($fp, filesize($file_tmp));
-         // fclose($fp);
-
-        
-            
+       
             
             $image = $connessione->real_escape_string(file_get_contents($file));
 
             $username = $_POST['usernamer'];
             $emailUtente = $_POST['emailr'];
-            $passwordUtente = $_POST['passwordr'];
+            $password = $_POST['passwordr'];
+            $passwordUtente = password_hash($password, PASSWORD_DEFAULT);
+
             $bio = $_POST['bio'];
 
             $sql = "INSERT INTO Utenti (username, emailUtente, passwordUtente, bio, imgProfilo) VALUES ('$username', '$emailUtente', '$passwordUtente', '$bio', '$image')";
@@ -60,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         }else{
             $username = $_POST['usernamer'];
             $emailUtente = $_POST['emailr'];
-            $passwordUtente = $_POST['passwordr'];
+            $password = $_POST['passwordr'];
+            $passwordUtente = password_hash($password, PASSWORD_DEFAULT);
             $bio = $_POST['bio'];
             $image = $connessione->real_escape_string(file_get_contents("../resources/profiloVuoto.jpg"));
 

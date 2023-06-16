@@ -1,5 +1,4 @@
 <?php
-//session_set_cookie_params(1440);
 
 
 require 'connection.php';
@@ -33,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     //salvo l'immagine in una cartella locale e ne salvo il percorso nella variabili di sessione
     //per accederle più velocemente. 
-   
-    if (isset($result) && $result['passwordUtente'] == $password){
+    $hashedPassword = $result['passwordUtente'];
+    if (isset($result) && password_verify($password, $hashedPassword)){
         
         //imposto la visuale dell'account tramite js
         
@@ -56,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         }
         
         $_SESSION['username'] = $_POST['username'];
-        $_SESSION['password'] = $password;
         $_SESSION['bio'] = $result['bio'];
         $_SESSION['logged'] = true; 
     

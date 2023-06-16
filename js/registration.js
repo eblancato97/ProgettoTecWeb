@@ -1,4 +1,3 @@
-// Selezioniamo il form e impediamo la sua sottomissione normale
 var datar;
 const formr = document.getElementById('register');
 formr.addEventListener('submit', (event) => {
@@ -9,10 +8,8 @@ formr.addEventListener('submit', (event) => {
     const strNoSpace = inputVal.replace(/\s+/g, '');
     document.getElementById("usernamer").value = strNoSpace;
     alert(strNoSpace);
-    // Otteniamo i dati dal form
     const formDatar = new FormData(formr);
 
-    // Creiamo una richiesta HTTP
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {

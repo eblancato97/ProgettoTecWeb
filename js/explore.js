@@ -65,7 +65,5 @@ function goToProfile(data){
     sessionStorage.setItem('otherUser', data.username); 
     sessionStorage.setItem('otherImg', data.imgProfilo); 
     sessionStorage.setItem('otherBio', data.bio); 
-    // var param = encodeURIComponent(user);
-    // var newLocation = "./otherProfile.html?parameter="+param;
     window.location = "./otherProfile.html";
 }
