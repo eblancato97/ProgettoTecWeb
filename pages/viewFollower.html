@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>viewFollower</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/global.css">
+    <link rel="stylesheet" type="text/css" href="../css/styleViewFollower.css">
+</head>
+<body>
+    <header>
+        <h1>MakeMe</h1>
+        <a href="./notifiche.html"><img src="../resources/cuoreNotifica.png" alt="notifiche"></a>
+    </header>
+
+    <main>
+        <h2 id="follow-er"></h2>
+        <ul id="view-follower"></ul>
+    </main>
+
+    <footer>
+        <a id="home" href="./home.html"><img src="../resources/home.png" alt="home"></a>
+        <a id="search" href="./explore.html"> <img src="../resources/search.png" alt="trova utenti"/></a>
+        <a id="profile" href="./profilo.html"> <img src="../resources/profilo.png" alt="profilo"/></a>      
+    </footer>
+
+    <script src="../js/viewFollower.js"></script>
+    <script src="../js/viewFollow.js"></script>
+    <script> 
+        if(sessionStorage.getItem('action') == 'follower'){
+            getFollower();
+        }else if(sessionStorage.getItem('action') == 'follow'){
+            getFollow(); 
+        }
+    </script>
+</body>
+</html>

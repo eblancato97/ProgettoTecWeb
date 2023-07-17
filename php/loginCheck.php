@@ -26,59 +26,62 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     mysqli_stmt_bind_param($stmt, 's', $username);
     $stmt->execute();
     $res = $stmt->get_result();
-    //$result = $res->fetch_row();
-    $result = mysqli_fetch_assoc($res);
-    
+    if (mysqli_num_rows($res)>0){
 
-    //salvo l'immagine in una cartella locale e ne salvo il percorso nella variabili di sessione
-    //per accederle più velocemente. 
-    $hashedPassword = $result['passwordUtente'];
-    if (isset($result) && password_verify($password, $hashedPassword)){
+        $result = mysqli_fetch_assoc($res);
         
-        //imposto la visuale dell'account tramite js
-        
-    
-        //cancello il file temporaneo per l'immagine profilo
-        $file = "../".$username.".jpg"; 
-        if (is_file($file)){
-            unlink($file); 
-        }
 
-
-        
-        if (!is_null($result['imgProfilo']))
-        {             
+        //salvo l'immagine in una cartella locale e ne salvo il percorso nella variabili di sessione
+        //per accederle più velocemente. 
+        $hashedPassword = $result['passwordUtente'];
+        if (isset($result) && password_verify($password, $hashedPassword)){
             
-            $image = $result['imgProfilo'];
-            file_put_contents($file, $image);
-            $_SESSION['imgProfilo'] = $file;
-        }
+            //imposto la visuale dell'account tramite js
+            
         
-        $_SESSION['username'] = $_POST['username'];
-        $_SESSION['bio'] = $result['bio'];
-        $_SESSION['logged'] = true; 
-    
-    
-    
-        $json = array(
-            "username" => $_POST['username'],
-            "bio" => $result['bio'],
-            "logged" => true,  
-            "urlImage" => $file
-        );
-    
-        echo json_encode($json);
-    
-    
-    }else{  
-        
-        
-        echo 1;
-        
-    }
+            //cancello il file temporaneo per l'immagine profilo
+            $file = "../".$username.".jpg"; 
+            if (is_file($file)){
+                unlink($file); 
+            }
 
-    $connection->close();
-    
+
+            
+            if (!is_null($result['imgProfilo']))
+            {             
+                
+                $image = $result['imgProfilo'];
+                file_put_contents($file, $image);
+                $_SESSION['imgProfilo'] = $file;
+            }
+            
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['bio'] = $result['bio'];
+            $_SESSION['logged'] = true; 
+        
+        
+        
+            $json = array(
+                "username" => $_POST['username'],
+                "bio" => $result['bio'],
+                "logged" => true,  
+                "urlImage" => $file
+            );
+        
+            echo json_encode($json);
+        
+        
+        }else{  
+            
+            
+            echo 1;
+            
+        }
+
+        $connection->close();
+    }else{
+        echo 1; 
+    }
 }
 
 

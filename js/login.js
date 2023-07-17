@@ -9,11 +9,11 @@ form.addEventListener('submit', (event) => {
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { 
             if (this.responseText == 1){
-                alert("Utente o password errate. Riprovare l'accesso. "+this.responseText); 
+                alert("Utente o password errate. Riprovare l'accesso. "); 
                 window.location = "./index.html"; 
             }else{
 
-                alert("Utente trovato."+this.responseText);                    
+                alert("Utente trovato.");                    
                 let data = JSON.parse(this.responseText);
                 sessionStorage.setItem('username', data.username);
                 sessionStorage.setItem('bio', data.bio); 

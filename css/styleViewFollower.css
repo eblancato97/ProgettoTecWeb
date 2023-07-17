@@ -1,0 +1,29 @@
+ul {
+    list-style-type: none;
+    width: 90%;
+    margin-bottom: 12vh;
+}
+
+h2{
+    padding-top: 2vh;
+    text-align: center;
+    padding-bottom: 2vh;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+li img{
+    border-radius: 100%;
+    width: 10vh;
+}
+
+li h3{
+    padding-left: 2rem;
+    width:80%;
+}

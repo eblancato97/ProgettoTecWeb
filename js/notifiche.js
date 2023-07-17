@@ -28,6 +28,7 @@ function populate(notifiche){
         const imgNotifica = document.createElement('img');
         imgNotifica.classList.add('imgNotifica');
         imgNotifica.src = "data:image/jpeg;base64,"+element.imgProfilo; 
+        imgNotifica.alt = "immagine profilo di: " + element.userNotifica;
         
         const notifica = document.createElement('span');
         notifica.classList.add('notifica');

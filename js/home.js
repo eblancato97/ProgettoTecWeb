@@ -40,6 +40,7 @@ function createCard(post) {
   //imgProfilo
   imgProfilo = document.createElement('img');
   imgProfilo.src = "data:image/jpeg;base64,"+post.imgProfilo
+  imgProfilo.alt = "immagine profilo di "+ post.autore;
 
  
   titleText = document.createTextNode(post.autore);
@@ -138,6 +139,7 @@ function createPostCarousel(post) {
     // Creazione dell'elemento immagine
     const imageElement = document.createElement('img');
     imageElement.src = "data:image/jpeg;base64," + image;
+    imageElement.alt = "immagine post di " + post.autore;
     imageElement.classList.add('d-block', 'w-100');
 
     // Aggiunta dell'elemento immagine alla slide
@@ -349,6 +351,7 @@ function generateCommentList(post){
           const imgCommento = document.createElement('img');
           imgCommento.classList.add('imgCommento');
           imgCommento.src = "data:image/jpeg;base64," + element.imgProfilo;
+          imgCommento.alt = "immagine profilo di: " + element.username;
 
           const userCommento = document.createElement('h6');
           userCommento.classList.add('user-commento');

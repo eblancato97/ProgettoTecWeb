@@ -42,7 +42,7 @@ function createUserElement(data){
     imgElement = document.createElement('img'); 
     imgElement.classList.add('img-element');
     imgElement.src = 'data:image/jpeg;base64,' + data.imgProfilo;
-
+    imgElement.alt = "immagine profilo di: " + data.username;
 
 
 

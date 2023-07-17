@@ -56,6 +56,7 @@ function createCard(post) {
   //imgProfilo
   imgProfilo = document.createElement('img');
   imgProfilo.src = "data:image/jpeg;base64," + post.imgProfilo
+  imgProfilo.alt = "immagine profilo di: " + post.autore;
 
 
   titleText = document.createTextNode(post.autore);
@@ -154,6 +155,7 @@ function createPostCarousel(post) {
     const imageElement = document.createElement('img');
     imageElement.src = "data:image/jpeg;base64," + image;
     imageElement.classList.add('d-block', 'w-100');
+    imageElement.alt = "immagine post di :"+post.autore;
 
     // Aggiunta dell'elemento immagine alla slide
     slideItem.appendChild(imageElement);
@@ -197,6 +199,7 @@ function createPostCarousel(post) {
 function setProfileInfo(info) {
   const img = document.getElementById('img');
   img.src = "data:image/jpeg;base64," + sessionStorage.getItem('otherImg');
+  img.alt = "immagine profilo di: "+ sessionStorage.getItem('otherUser');
 
   const textUser = document.createTextNode(sessionStorage.getItem('otherUser'));
   const user = document.getElementById('username');
@@ -208,9 +211,20 @@ function setProfileInfo(info) {
 
   const nFollower = document.getElementById('n-follower');
   nFollower.appendChild(document.createTextNode(info.follower))
+  nFollower.addEventListener('click', function(){
+    sessionStorage.setItem('action', 'follower');
+    sessionStorage.setItem('userFollower', sessionStorage.getItem('otherUser'));
+    window.location='./viewFollower.html'; 
+  })
 
   const nFollow = document.getElementById('n-follow');
   nFollow.appendChild(document.createTextNode(info.seguiti));
+  nFollow.addEventListener('click', function(){
+    sessionStorage.setItem('action', 'follow');
+    sessionStorage.setItem('userFollow', sessionStorage.getItem('otherUser'))
+    window.location = './viewFollower.html';
+  })
+  
 
   const postNumber = document.getElementById('n-post');
   postNumber.appendChild(document.createTextNode(info.nPost));
@@ -448,6 +462,7 @@ function generateCommentList(post){
           const imgCommento = document.createElement('img');
           imgCommento.classList.add('imgCommento');
           imgCommento.src = "data:image/jpeg;base64," + element.imgProfilo;
+          img.alt = "immagine profilo di: " + element.username;
 
           const userCommento = document.createElement('h6');
           userCommento.classList.add('user-commento');
