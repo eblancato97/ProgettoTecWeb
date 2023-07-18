@@ -1,5 +1,5 @@
 var carouselId = 0;
-
+var commentId = 0; 
 
 var valoreParametro = sessionStorage.getItem('otherUser');
 // Creazione di un oggetto FormData per inviare il parametro
@@ -369,6 +369,12 @@ function createCommentButton(post, bottom){
   var addCommentBox = document.createElement('div');
   addCommentBox.classList.add('addComment-box');
   addCommentBox.style.display = 'none';
+
+  const label = document.createElement('label');
+  label.setAttribute("for", "comment"+commentId);
+  label.textContent = "inserisci commento";
+  label.style.display = 'none';
+  
   
   var commentText = document.createElement('input');
   commentText.placeholder = 'inserisci commento';
@@ -376,7 +382,10 @@ function createCommentButton(post, bottom){
   commentText.alt = 'inserisci commento'
   commentText.maxLength = 300;
   commentText.classList.add('insertText');
+  commentText.id = "comment"+commentId;
   
+  commentId++;
+
   var commentSubmit = document.createElement('input');
   commentSubmit.alt = 'invia commento';
   commentSubmit.type = 'image';
@@ -384,6 +393,7 @@ function createCommentButton(post, bottom){
   commentSubmit.classList.add('submitComment');
   
   //aggiungo la struttura alla box nuovo commento 
+  addCommentBox.appendChild(label);
   addCommentBox.appendChild(commentText); 
   addCommentBox.appendChild(commentSubmit); 
   
@@ -462,7 +472,7 @@ function generateCommentList(post){
           const imgCommento = document.createElement('img');
           imgCommento.classList.add('imgCommento');
           imgCommento.src = "data:image/jpeg;base64," + element.imgProfilo;
-          img.alt = "immagine profilo di: " + element.username;
+          imgCommento.alt = "immagine profilo di: " + element.username;
 
           const userCommento = document.createElement('h6');
           userCommento.classList.add('user-commento');

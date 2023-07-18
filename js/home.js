@@ -1,5 +1,5 @@
 var carouselId = 0; 
-
+var commentId = 0; 
 
 // Avvia la richiesta AJAX al file PHP
 var xhr = new XMLHttpRequest();
@@ -258,13 +258,21 @@ function createCommentButton(post, bottom){
   var addCommentBox = document.createElement('div');
   addCommentBox.classList.add('addComment-box');
   addCommentBox.style.display = 'none';
-  
+
+  const label = document.createElement('label');
+  label.setAttribute("for", "comment"+commentId);
+  label.textContent = "inserisci commento";
+  label.style.display = 'none';
+
   var commentText = document.createElement('input');
   commentText.placeholder = 'inserisci commento';
   commentText.type= 'text';
   commentText.alt = 'inserisci commento';
   commentText.maxLength = 300;
   commentText.classList.add('insertText');
+  commentText.id = "comment"+commentId;
+
+  commentId++;
   
   var commentSubmit = document.createElement('input');
   commentSubmit.alt = 'invia commento';
@@ -273,6 +281,7 @@ function createCommentButton(post, bottom){
   commentSubmit.classList.add('submitComment');
   
   //aggiungo la struttura alla box nuovo commento 
+  addCommentBox.appendChild(label);
   addCommentBox.appendChild(commentText); 
   addCommentBox.appendChild(commentSubmit); 
   
